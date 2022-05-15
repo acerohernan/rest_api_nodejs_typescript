@@ -4,10 +4,13 @@ import config from "config";
 import log from "./utils/logger";
 import { connectToDb } from "./utils/connectToDb";
 import router from "./routes";
+import { desearilizeUser } from "./middleware/desearializeUser";
 
 const app = express();
 
 app.use(express.json());
+
+app.use(desearilizeUser);
 
 app.use(router);
 
